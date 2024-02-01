@@ -1,7 +1,4 @@
 import streamlit
-
-streamlit.stop()
-
 import pandas
 import snowflake.connector
 
@@ -44,4 +41,5 @@ with streamlit.form("Add a fruit..."):
 
     if addButton and newFruit is not None and newFruit != "":
         my_cur.execute(f"insert into pc_rivery_db.public.fruit_load_list values ('{newFruit}')")
+        streamlit.stop()
         
