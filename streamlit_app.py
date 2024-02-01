@@ -35,8 +35,7 @@ streamlit.text("The fruit load contains:")
 streamlit.dataframe(my_data_row)
 
 with streamlit.form("Add a fruit..."):
-    streamlit.text("New Fruit:")
-    newFruit  = streamlit.input_text("")
+    newFruit  = streamlit.text_input("New fruit", value = "")
     addButton = streamlit.form_submit_button("Add")
 
     if addButton and newFruit is not None and newFruit != "":
