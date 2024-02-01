@@ -33,3 +33,12 @@ my_cur.execute("select * from pc_rivery_db.public.fruit_load_list")
 my_data_row = my_cur.fetchall()
 streamlit.text("The fruit load contains:")
 streamlit.dataframe(my_data_row)
+
+with streamlit.form("Add a fruit...") as fruitForm:
+    fruitForm.text("New Fruit:")
+    newFruit  = fruitForm.input_text("")
+    addButton = fruitForm.submit()
+
+    if addButton and newFruit is not None and newFruit != "":
+        my_cur.execute(f"insert into pc_rivery_db.public.fruit_load_list values ('{newFruit}')")
+        
